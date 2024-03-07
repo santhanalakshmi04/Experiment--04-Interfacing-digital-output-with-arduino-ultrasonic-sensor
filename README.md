@@ -39,7 +39,9 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
 
+![image](https://github.com/santhanalakshmi04/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119475762/31e1ed37-094c-4f6f-b196-33ffd46383e4)
 
+![image](https://github.com/santhanalakshmi04/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119475762/aa415018-022f-45d3-bc00-717e77cd141e)
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -55,39 +57,68 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### PROGRAM 
+```
+NAME:K.SANTHANA LAKSHMI
+REG NO:212222240091
+DEPT:AIML
+
+const int trigpin=10;
+const int echopin=9;
+int red=7;
+int green=6;
+long duration;
+int distance;
+
+void setup()
+{
+  pinMode(trigpin, OUTPUT);
+    pinMode(echopin, INPUT);
+    pinMode(red, OUTPUT);
+    pinMode(green, OUTPUT);
+  Serial.begin(9600);
+  
 
 
 
 
+}
 
-
+void loop()
+{
+  digitalWrite(trigpin, LOW);
+  delay(20); 
+  digitalWrite(trigpin, HIGH);
+  delay(20);
+    digitalWrite(trigpin, LOW);
+duration=pulseIn(echopin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print(distance);
+  Serial.println("cms");
+  if(distance>5)
+  {
+     digitalWrite(red, HIGH);
+  delay(200); 
+   digitalWrite(red, LOW);
+  delay(200);
+  }
+  else
+  {
+     digitalWrite(green, HIGH);
+  delay(200); 
+   digitalWrite(green, LOW);
+  delay(200); 
+  }
+}
+```
 ### Distance vs measurement table 
 
+![image](https://github.com/santhanalakshmi04/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119475762/1996a366-64b2-4318-8dfa-a5ef7355cbaa)
 			
  
-			
-			
-			
+![image](https://github.com/santhanalakshmi04/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119475762/47e9aa8f-dce5-461a-939d-203c45146f50)
 
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
+   		Average error = sum/ number of readings 
+Average error = (0.06+0.13+0.55+0.79)/5=1.83/5=0.366
 
-			
-			
-			
-			
-			
-			Average error = sum/ number of readings 
- 
-
-
-
-
-
-
-
-
-### RESULTS
-
-
-
- 
+ ### RESULTS
+Thus,to interface an ultrasonic pair and measure the distance in centimeters , calculate the error is successfully executed.
